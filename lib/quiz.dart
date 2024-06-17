@@ -23,13 +23,13 @@ class _QuizState extends State<Quiz>{
     });
   }
   void chooseAnswer(String answer){
-    selectedAnswers.add()
+    selectedAnswers.add(answer);
   }
   @override
   Widget build(context) {
    Widget screenWidget = StartScreen(switchScreen);
    if(activeScreen == 'questions-screen'){
-     screenWidget = const QuestionsScreen();
+     screenWidget =  QuestionsScreen(onSelectedAnswer: chooseAnswer,);
    }
     return MaterialApp(
       home: Scaffold(
