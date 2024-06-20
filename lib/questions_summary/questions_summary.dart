@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
+import 'package:quiz/questions_summary/summary_item.dart';
 
 class QuestionsSummary extends StatelessWidget {
   const QuestionsSummary(this.summaryData,{super.key});
@@ -13,7 +14,8 @@ class QuestionsSummary extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: summaryData.map((data) {
-            return Row(children: [
+            return SummaryItem(data);
+              Row(children: [
             Text(((data['question_index'] as int) + 1).toString()),
               Expanded(
                 child: Column(children: [

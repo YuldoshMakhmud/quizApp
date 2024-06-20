@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:quiz/data/questions.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz/answer_button.dart';
@@ -35,16 +36,18 @@ void answerQuestion(String selectedAnswer){
           crossAxisAlignment: CrossAxisAlignment.stretch,
         
           children: [
-             Text(
-              currentQuestion.text,
-              style: GoogleFonts.lato(
-                color:  Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-               textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 30),
+             SingleChildScrollView(
+               child: Text(
+                currentQuestion.text,
+                style: GoogleFonts.lato(
+                  color:  Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+                 textAlign: TextAlign.start,
+                           ),
+             ),
+            const SizedBox(height: 40),
             ...currentQuestion.getShuffledAnswer().map((answer) {
               return AnswerButton(
                 answerText: answer,
