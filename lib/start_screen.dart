@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz/book.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 
 class StartScreen extends StatelessWidget {
   const StartScreen(  this.startQuiz,{super.key});
+
+  void _launchURL() async {
+    const url = 'https://flutter.dev';
+    if (await canLaunch('https://t.me/EnglishwithMumtoza')) {
+      await launch('https://t.me/EnglishwithMumtoza');
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   final void Function() startQuiz;
 
@@ -19,6 +29,12 @@ class StartScreen extends StatelessWidget {
           'assets/images/photo_2024-06-15_12-19-34.jpg.png',
           width: 400,
           color: Colors.white,
+        ),
+        OutlinedButton.icon(
+          onPressed: _launchURL,
+          style: OutlinedButton.styleFrom(foregroundColor: Colors.white),
+          icon: const Icon(Icons.telegram),
+          label: const Text("Our Chanel"),
         ),
         const SizedBox(
           height: 70,
